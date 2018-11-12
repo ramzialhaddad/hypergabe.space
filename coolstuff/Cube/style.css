@@ -1,0 +1,14 @@
+html {
+	overflow: hidden;
+}
+body {
+	background-color: #95d1e8;
+}
+.stay-in-center-please {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
