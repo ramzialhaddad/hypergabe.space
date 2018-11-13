@@ -7,7 +7,7 @@ document.getElementById('display').appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 PIXI.loader
-    .add("jevil", "../../assets/images/JevilSS.PNG")
+    .add("jevil", "../../assets/images/JevilSS.png")
     .load(setup);
 
 var jevil;
