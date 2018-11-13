@@ -13,7 +13,8 @@ var thingstosay = [
 	'I\'m waiting for .meme to become available',
 	'owo what\'s this?? *nuzzles you*',
 	'Only losers refresh the page',
-	'Go to http://kakkoi.cafe for the bootleg version of this site'
+	'Go to http://kakkoi.cafe for the bootleg version of this site',
+	'mom said it\'s my turn to go on the xbox'
 ];
 
 var songstoplay = [

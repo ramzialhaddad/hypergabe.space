@@ -2,13 +2,9 @@ html {
 	overflow: hidden;
 }
 body {
-    background-color: #95d1e8;
+    background-color: #0b0d0e;
     height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#display {
-    border: 1px dashed black;
 }
