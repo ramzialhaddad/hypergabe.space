@@ -7,7 +7,7 @@ document.getElementById('display').appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 PIXI.loader
-    .add("jevil", "../../assets/images/JevilSS.png")
+    .add("jevil", "../../assets/images/jevilSS.png")
     .load(setup);
 
 var jevil;
@@ -28,11 +28,11 @@ var jump = setInterval(function() {
         rect.y += 240;
     }
     rect.x += 192;
-    sprite.texture.frame = rect;
+    jevil.texture.frame = rect;
 }, 40);
 
-    sprite.scale.set(2,2);
-    stage.addChild(sprite)
+    jevil.scale.set(2,2);
+    stage.addChild(jevil)
 
     animationLoop();
 }
