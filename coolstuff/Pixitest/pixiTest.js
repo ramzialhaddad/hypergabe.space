@@ -21,17 +21,20 @@ function setup(){
 
 var jump = setInterval(function() {
     rect.x += 192;
-    if (rect.x >= 192 * 4){
+    if (rect.x >= 192 * 5){
         rect.x = 0;
         rect.y += 240;
-        if(rect.y >= 240 * 7){
+        if(rect.y >= 240 * 8){
             rect.y = 0;
         }
     }
     jevil.texture.frame = rect;
-}, 40);
+}, 80);
 
-    jevil.scale.set(2,2);
+    jevil.scale.set(1.5,1.5);
+    jevil.x = renderer.width / 2;
+    jevil.y = renderer.height / 2;
+    jevil.anchor.set(0.5, 0.5);
     stage.addChild(jevil)
 
     animationLoop();
