@@ -7,30 +7,38 @@ document.getElementById('display').appendChild(renderer.view);
 var stage = new PIXI.Container();
 
 PIXI.loader
-    .add("jevil", "../../assets/images/Jevil_battle_jumping.gif")
+    .add("jevil", "../../assets/images/JevilSS.PNG")
     .load(setup);
 
 var jevil;
 
 function setup(){
-    jevil = new PIXI.Sprite(
-        PIXI.loader.resources["jevil"].texture
-    );
+    var rect = new PIXI.Rectangle(0,0,192,240)
+    var texture = PIXI.loader.resources["jevil"].texture;
+    texture.frame = rect;
 
-    stage.addChild(jevil);
+    jevil = new PIXI.Sprite(texture);
+
+var jump = setInterval(function() {
+    if (rect.x >= 192 * 5){
+        rect.x = 0;
+        if(rect.y >= 240 * 8){
+            rect.y = 0;
+        }
+        rect.y += 240;
+    }
+    rect.x += 192;
+    sprite.texture.frame = rect;
+}, 40);
+
+    sprite.scale.set(2,2);
+    stage.addChild(sprite)
 
     animationLoop();
 }
 
 function animationLoop(){
     requestAnimationFrame(animationLoop);
-
-    jevil.scale.set(1.5, 1.5);
-    jevil.x = renderer.width / 2;
-    jevil.y = renderer.height / 2;
-    jevil.anchor.set(0.5, 0.5);
-
-    jevil.roation += 0.001
 
     renderer.render(stage);
 }
