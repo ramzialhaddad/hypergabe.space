@@ -27,8 +27,8 @@ var jump = setInterval(function() {
         }
         rect.y += 240;
     }
-    rect.x += 192;
     jevil.texture.frame = rect;
+    rect.x += 192;
 }, 40);
 
     jevil.scale.set(2,2);
