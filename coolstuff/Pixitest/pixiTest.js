@@ -20,15 +20,15 @@ function setup(){
     jevil = new PIXI.Sprite(texture);
 
 var jump = setInterval(function() {
-    if (rect.x >= 192 * 5){
+    rect.x += 192;
+    if (rect.x >= 192 * 4){
         rect.x = 0;
-        if(rect.y >= 240 * 8){
+        if(rect.y >= 240 * 7){
             rect.y = 0;
         }
         rect.y += 240;
     }
     jevil.texture.frame = rect;
-    rect.x += 192;
 }, 40);
 
     jevil.scale.set(2,2);
