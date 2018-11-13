@@ -1,0 +1,14 @@
+html {
+	overflow: hidden;
+}
+body {
+    background-color: #95d1e8;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#display {
+    border: 1px dashed black;
+}
