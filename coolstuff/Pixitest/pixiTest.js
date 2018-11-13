@@ -23,10 +23,10 @@ var jump = setInterval(function() {
     rect.x += 192;
     if (rect.x >= 192 * 4){
         rect.x = 0;
+        rect.y += 240;
         if(rect.y >= 240 * 7){
             rect.y = 0;
         }
-        rect.y += 240;
     }
     jevil.texture.frame = rect;
 }, 40);
