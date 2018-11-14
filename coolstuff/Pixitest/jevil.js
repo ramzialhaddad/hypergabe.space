@@ -46,7 +46,7 @@ function setup(){
     stage.addChild(jevil)
     animationLoop();
 
-    jevil.click = function(){
+    jevil.on('pointerdown', function() {
         if (!bool){
             bool = true;
             sound.play();
@@ -61,7 +61,7 @@ function setup(){
                 }, 1000)
             }
         }
-    }
+    });
     
 }
 
@@ -76,5 +76,9 @@ function randomVoice(){
     var voice = new Audio() 
     voice.src = "sounds/data" + x + ".wav";
     voice.play();
+}
+
+function tap(){
+    
 }
 
