@@ -7,7 +7,7 @@ document.getElementById('display').appendChild(renderer.view);
 var stage = new PIXI.Container();
 var bool = false;
 var cd = false;
-var sound = document.getElementById("audio");
+var sound = new Audio('worldisrevolving.mp3');
 
 PIXI.loader
     .add("jevil", "../../assets/images/jevilSS.png")
@@ -20,6 +20,8 @@ function setup(){
     var rect = new PIXI.Rectangle(0,0,192,240)
     var texture = PIXI.loader.resources["jevil"].texture;
     texture.frame = rect;
+
+    sound.loop = true;
 
     jevil = new PIXI.Sprite(texture);
 
@@ -76,9 +78,5 @@ function randomVoice(){
     var voice = new Audio() 
     voice.src = "sounds/data" + x + ".wav";
     voice.play();
-}
-
-function tap(){
-    
 }
 
