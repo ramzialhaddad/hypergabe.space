@@ -41,6 +41,13 @@ h1 {
 	overflow: hidden;
 }
 
+a, a:visited {
+	color: white;
+}
+a:hover{
+	color: #66dcff;
+}
+
 @font-face {
     font-family: 'Manga Temple';
     src: url('assets/fonts/MangaTempleItalic.eot');
@@ -97,8 +104,12 @@ h1 {
 	background: #2C2F33;
 	color: white;
 	font-family: verdana;
-	display: flex;
 	align-items: center;
 	justify-content: left;
 }
-
+.alignright{
+	float: right;
+}
+.alignleft{
+	float: left;
+}
