@@ -79,12 +79,12 @@ a:hover{
 }
 #randomtext{
 	position: absolute;
-	height:230px;
-	width:180px;
+	height:282px;
+	width:218px;
 	font-family: Manga Temple;
-	font-size: 22px;
-	top: 50px;
-	left: 505px;
+	font-size: 24px;
+	top: 161px;
+	left: 557px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -92,7 +92,7 @@ a:hover{
 }
 #imageholder{
 	position: fixed;
-	bottom: -14px;
+	bottom: 40px;
 	vertical-align: middle;
 }
 #footer{
