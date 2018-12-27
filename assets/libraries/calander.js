@@ -1,7 +1,7 @@
 // h-hewwo there 'w'
 var d = new Date();
 var month = d.getMonth();
-var day = d.getDay();
+var day = d.getDate();
 
 var thingstosay = [
 	'People like you belong in the trash.',
@@ -23,6 +23,8 @@ var thingstosay = [
 
 if (month == 11 & day < 27){
     console.log("Merry Christmas!!!")
+	console.log(month)
+	console.log(day)
 
     document.getElementById("gabechan").src="assets/images/gabe2.png";
 
