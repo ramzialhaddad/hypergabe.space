@@ -33,13 +33,14 @@ if(month == 4 & day == 20){
 
 document.getElementById("gabechan").src=todaypage.Gabe;
 
-
+/*
 var randomSong = randomizer(todaypage.Songs.length);
 document.getElementById('iframeAudio').src = "assets/songs/" + musicselect + todaypage.Songs[randomSong] + ".mp3";
 document.getElementById('SongName').innerHTML = "Song: " + todaypage.Songs[randomSong];
-	
+*/	
 var randomMessage = randomizer(todaypage.Messages.length);
 document.getElementById('randomtext').innerHTML = todaypage.Messages[randomMessage];
+
 
 
 /*
