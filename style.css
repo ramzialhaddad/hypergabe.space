@@ -12,11 +12,12 @@ body {
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-	background: linear-gradient(180deg, #fba2d0, #ff66e5, #66dcff);
+	background: linear-gradient(0deg, #efa6fb, #a6d9fb, #f5bad3);
 	background-size: 600% 600%;
 
 	-webkit-animation: Gradient 30s ease infinite;
 	-moz-animation: Gradient 30s ease infinite;
+	-o-animation: Gradient 30s ease infinite;
 	animation: Gradient 30s ease infinite;
 	}
 
@@ -30,11 +31,18 @@ body {
 		50%{background-position:50% 100%}
 		100%{background-position:50% 0%}
 	}
+	@-o-keyframes Gradient {
+		0%{background-position:92% 0%}
+		50%{background-position:9% 100%}
+		100%{background-position:92% 0%}
+	}
 	@keyframes Gradient { 
 		0%{background-position:50% 0%}
 		50%{background-position:50% 100%}
 		100%{background-position:50% 0%}
 	}
+
+	
 h1 {
     margin-top: 0;
 	text-align: center;
@@ -76,40 +84,4 @@ a:hover{
     from { transform: translate(0,  0px); }
     50%  { transform: translate(0, 20px); }
     to   { transform: translate(0, 0px); }    
-}
-#randomtext{
-	position: absolute;
-	height:470px;
-	width:218px;
-	font-family: Manga Temple;
-	font-size: 24px;
-	top: 161px;
-	left: 557px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-#imageholder{
-	position: fixed;
-	bottom: 40px;
-	vertical-align: middle;
-}
-#footer{
-	white-space: nowrap;
-	position: fixed;
-	bottom: 0;
-	height: 40px;
-	width: 100%;
-	background: #2C2F33;
-	color: white;
-	font-family: verdana;
-	align-items: center;
-	justify-content: left;
-}
-.alignright{
-	float: right;
-}
-.alignleft{
-	float: left;
 }
