@@ -71,14 +71,38 @@ a:hover{
 #container{
 	height: 100%;
 	overflow: hidden;
+	position: relative;
 	
 }
-#floating{
-	font-family: verdana;
+#holder{
+	height: 100%;
+	width: 800px;
+	margin: 0 auto;
+}
+#GTH{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#Radio{
+	width: 800px;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+}
+.float{
+	/*font-family: verdana;*/
 	animation-name: floating;
     animation-duration: 6s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+}
+.radio-wrapper{
+	width: 600px;
+	height: 120px;
+	position: absolute;
+	bottom: 10px;
+	right: 25%;
+	left: 50%;
+	margin-left: -300px;
 }
 @keyframes floating {
     from { transform: translate(0,  0px); }
