@@ -1,0 +1,17 @@
+#Radio{
+	width: 800px;
+	height: 100px;
+	position: absolute;
+	bottom: 0;
+}
+.radio-wrapper{
+	width: 600px;
+	height: 120px;
+	position: absolute;
+	bottom: 10px;
+	right: 25%;
+	left: 50%;
+	margin-left: -300px;
+	border-radius: 25px;
+	background-color: rgb(245, 111, 234, 0.4);	
+}
