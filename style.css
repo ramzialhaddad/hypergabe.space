@@ -83,13 +83,28 @@ a:hover{
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .float{
-	/*font-family: verdana;*/
+	font-family: verdana;
 	animation-name: floating;
     animation-duration: 6s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 }
-
-
+@keyframes floating {
+	from { transform: translate(0,  0px); }
+	50%  { transform: translate(0, 20px); }
+	to   { transform: translate(0, 0px); }    
+}
+.floatsmall{
+	font-family: verdana;
+	animation-name: floatingsmall;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes floatingsmall {
+	from { transform: translate(0,  0px); }
+	50%  { transform: translate(0, 10px); }
+	to   { transform: translate(0, 0px); }    
+}
   
   
