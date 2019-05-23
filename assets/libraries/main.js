@@ -1,11 +1,11 @@
-define(["require", "exports", "./radio/Cradioplayer", "./CPage"], function (require, exports, Cradioplayer_1, CPage_1) {
+define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./data/pageEvents"], function (require, exports, random_1, Cradioplayer_1, CPage_1, pageEvents_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var d = new Date();
     var month = d.getMonth();
     var day = d.getDate();
     var radio = new Cradioplayer_1.RadioPlayer();
-    var page = new CPage_1.pageEvents();
+    var page = new CPage_1.pageEvents(pageEvents_1.defaultPage);
     //Testing data
     var songlist = page.GetPlaylist();
     //
@@ -37,5 +37,7 @@ define(["require", "exports", "./radio/Cradioplayer", "./CPage"], function (requ
         }
     };
     var songname = document.getElementById("radio-song-name");
-    songname.innerHTML = songlist[0].GetTitle() + " - " + songlist[0].GetArtist();
+    var random = random_1.randomnumber(songlist.length);
+    var cursong = songlist[random];
+    songname.innerHTML = cursong.GetTitle() + " - " + cursong.GetArtist();
 });
