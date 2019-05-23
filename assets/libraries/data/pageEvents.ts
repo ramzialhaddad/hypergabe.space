@@ -1,5 +1,5 @@
 import {Song} from '../radio/Csong'
-type PageData = {icon:string, messages:string[], playlist:Song[]}
+export type PageData = {icon:string, messages:string[], playlist:Song[]}
 
 let defaultPage:PageData;
 let birthdayPage:PageData;
@@ -46,8 +46,8 @@ let halloweenPage:PageData;     // TO BE ADDED SOON
             new Song("V o i d","Zane Alexander","../../songs/default/Zane Alexander - V o i d.mp3"),
             new Song("葛城 ミサトYEBISU (YUNG BAE EDIT)","マクロスMACROSS 82-99","../../songs/default/マクロスMACROSS 82-99 - 葛城 ミサトYEBISU (YUNG BAE EDIT).mp3"),
         ]
-
     }
+    export {defaultPage}
 
 //############
 //END OF DATA
