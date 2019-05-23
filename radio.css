@@ -42,7 +42,7 @@
 }
 .radio-progress-bar{
     display: block;
-    width: 0;
+    width: 0%;
     height: 100%;
     border-radius: 20px;
     background-color: rgb(117, 114, 247);
@@ -71,5 +71,33 @@
 .small{
     width: 40px;
     height: 40px;
-    margin-top: 5px;
+    margin-top: 10px;
+}
+.previous{
+    background-image: url("assets/svg/radio/backward.svg");  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 75%;
+    background-position-x: 3px;
+}
+.next{
+    background-image: url("assets/svg/radio/forward.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 75%;
+    background-position-x: 6px;
+}
+.play{
+    background-image: url("assets/svg/radio/play.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+    background-position-x: 14px
+}
+.pause{
+    background-image: url("assets/svg/radio/pause.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 55%;
+    background-position-x: 12px
 }

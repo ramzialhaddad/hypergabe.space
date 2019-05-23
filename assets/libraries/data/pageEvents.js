@@ -1,3 +1,4 @@
+// @ts-ignore
 pageData = {
 	"Default": {
 	    "Gabe":"assets/images/gabeDefault.png",
