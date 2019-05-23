@@ -1,84 +1,52 @@
-// @ts-ignore
-pageData = {
-	"Default": {
-	    "Gabe":"assets/images/gabeDefault.png",
-		"Messages": [
-		    "People like you belong in the trash.",
-		    "I don't feel like doing anything today.",
-			"You wanna play fortnite with me?",
-			"Why is a loser like you on here?",
-			"Please don't speak to me... or look at me.",
-			"If you like Satania then you must be a real idiot.",
-			"How do I convert skrillex.mp3 into html??",
-			"Hey I heard that HyperGabe is a pretty cool name",
-			"Please do us both a favour and get as far from me as possible",
-			"I don't remember asking you to be here.",
-			"I'm waiting for .meme to become available",
-			"owo what's this?? *nuzzles you*",
-			"Only losers refresh the page",
-			"Go to http://kakkoi.cafe for the bootleg version of this site",
-			"mom said it's my turn to go on the xbox"
-		],
-		"Songs": [
-		  "18 Carat Affair - Modus Operandi",
-			"A Hat in Time - Peace and Tranquility",
-			"A Z U R E - The Future Is Now",
-			"Anri - Remember Summer Days",
-		   "bbrainz - cyber imagination",
-			"Black Heron – Surgeon Stimulator (Heart Transplant)",
-			"Corp - Just in Time",
-			"hello meteor - Breeze Bay",
-			"HOME - Resonance",
-			"Jasper De Ceuster - Dusk",
-			"Junko Ohashi - Telephone Number",
-			"Surfing - Hit The Spot",
-			"THOUGHTS - MIDNIGHT",
-			"Zane Alexander - V o i d",
-			"マクロスMACROSS 82-99 - 葛城 ミサトYEBISU (YUNG BAE EDIT)"
-		]
-	},
-	"Christmas": {
-	    "Gabe" :"assets/images/gabeSanta.png",
-	    "Messages": [
-		    "People like you belong in the trash.",
-			"I don't feel like doing anything today.",
-			"You wanna play fortnite with me?",
-		    "Why is a loser like you on here?",
-			"Please don't speak to me... or look at me.",
-			"If you like Satania then you must be a real idiot.",
-			"How do I convert skrillex.mp3 into html??",
-			"Hey I heard that HyperGabe is a pretty cool name",
-			"Please do us both a favour and get as far from me as possible",
-			"I don't remember asking you to be here.",
-			"I'm waiting for .meme to become available",
-			"owo what's this?? *nuzzles you*",
-			"Only losers refresh the page",
-			"Go to http://kakkoi.cafe for the bootleg version of this site",
-			"mom said it's my turn to go on the xbox"
-	],
-		"Songs": [
-		    "Bart Graft - Yuletide '88",
-	      	"bungalow - christmas time is here",
-	      	"CUSAX - CUSAXMAS",
-	      	"DANCE WITH THE DEAD - Carol of Bells",
-	      	"Holy Ghost! & Classixx - Merry Christmas Mr. Lawrence",
-	      	"iamMANOLIS - Xmas in Rio",
-	      	"NETVERK - LastクリスマスXMAS",
-	      	"Phaserland - What Does Christmas Mean To You",
-	      	"Street Cleaner - Flying Home For Christmas",
-	      	"Wham! - Last Christmas (Vaporwave Remix)"
-	]
-	},
-	"Birthday": {
-	    "Gabe" :"assets/images/gabeBirthday.png",
-	    "Messages": [
-			"Happy birthday to me.",
-			"I hope someone comes to my party",
-			"I don't remember inviting you here..."
-	],
-		"Songs": [
-		    "Playing with Delay - Heatbeat"
-	]
-	}
-}
-  
+define(["require", "exports", "../radio/Csong"], function (require, exports, Csong_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var defaultPage;
+    exports.defaultPage = defaultPage;
+    var birthdayPage;
+    var christmasPage;
+    var halloweenPage; // TO BE ADDED SOON
+    //############
+    //DEFAULT PAGE
+    //############
+    exports.defaultPage = defaultPage = {
+        icon: "assets/images/gabeDefault.png",
+        messages: [
+            "People like you belong in the trash.",
+            "I don't feel like doing anything today.",
+            "You wanna play fortnite with me?",
+            "Why is a loser like you on here?",
+            "Please don't speak to me... or look at me.",
+            "If you like Satania then you must be a real idiot.",
+            "How do I convert skrillex.mp3 into html??",
+            "Hey I heard that HyperGabe is a pretty cool name",
+            "Please do us both a favour and get as far from me as possible",
+            "I don't remember asking you to be here.",
+            "I'm waiting for .meme to become available",
+            "owo what's this?? *nuzzles you*",
+            "Only losers refresh the page",
+            "Go to http://midori.xyz for free unlimited v-bucks",
+            "mom said it's my turn to go on the xbox"
+        ],
+        playlist: [
+            new Csong_1.Song("Modus Operandi", "18 Carat Affair", "../../songs/default/18 Carat Affair - Modus Operandi.mp3"),
+            new Csong_1.Song("Peace and Tranquility", "A Hat in Time", "../../songs/default/A Hat in Time - Peace and Tranquility.mp3"),
+            new Csong_1.Song("The Future Is Now", "A Z U R E", "../../songs/default/A Z U R E - The Future Is Now.mp3"),
+            new Csong_1.Song("Remember Summer Days", "Anri", "../../songs/default/Anri - Remember Summer Days.mp3"),
+            new Csong_1.Song("cyber imagination", "bbrainz", "../../songs/default/bbrainz - cyber imagination.mp3"),
+            new Csong_1.Song("Surgeon Stimulator (Heart Transplant)", "Black Heron", "../../songs/default/Black Heron – Surgeon Stimulator (Heart Transplant).mp3"),
+            new Csong_1.Song("Just in Time", "Corp", "../../songs/default/Corp - Just in Time.mp3"),
+            new Csong_1.Song("Breeze Bay", "hello meteor", "../../songs/default/hello meteor - Breeze Bay.mp3"),
+            new Csong_1.Song("Resonance", "HOME", "../../songs/default/HOME - Resonance.mp3"),
+            new Csong_1.Song("Dusk", "Jasper De Ceuster", "../../songs/default/Jasper De Ceuster - Dusk.mp3"),
+            new Csong_1.Song("Telephone Number", "Junko Ohashi", "../../songs/default/Junko Ohashi - Telephone Number.mp3"),
+            new Csong_1.Song("Hit The Spot", "Surfing", "../../songs/default/Surfing - Hit The Spot.mp3"),
+            new Csong_1.Song("MIDNIGHT", "THOUGHTS", "../../songs/default/THOUGHTS - MIDNIGHT.mp3"),
+            new Csong_1.Song("V o i d", "Zane Alexander", "../../songs/default/Zane Alexander - V o i d.mp3"),
+            new Csong_1.Song("葛城 ミサトYEBISU (YUNG BAE EDIT)", "マクロスMACROSS 82-99", "../../songs/default/マクロスMACROSS 82-99 - 葛城 ミサトYEBISU (YUNG BAE EDIT).mp3"),
+        ]
+    };
+});
+//############
+//END OF DATA
+//############
