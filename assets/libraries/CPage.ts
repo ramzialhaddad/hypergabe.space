@@ -1,4 +1,5 @@
-import {PageData} from './data/IpageEvents'
+import {Song} from "./radio/Csong"
+import {PageData} from './data/pageEvents'
 export class pageEvents {
 
     private pageData!:PageData;
