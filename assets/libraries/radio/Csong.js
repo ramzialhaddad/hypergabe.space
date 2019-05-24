@@ -22,9 +22,15 @@ define(["require", "exports"], function (require, exports) {
         };
         Song.prototype.PlayAudio = function () {
             this.sound.play();
+            var element = document.getElementById("playpause");
+            element.classList.remove("play");
+            element.classList.add("pause");
         };
         Song.prototype.PauseAudio = function () {
             this.sound.pause();
+            var element = document.getElementById("playpause");
+            element.classList.remove("pause");
+            element.classList.add("play");
         };
         return Song;
     }());

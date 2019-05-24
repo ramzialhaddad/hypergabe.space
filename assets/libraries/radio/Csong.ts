@@ -26,8 +26,14 @@ export class Song {
 
     PlayAudio(){
         this.sound.play();
+        let element = document.getElementById("playpause") as HTMLInputElement;
+        element.classList.remove("play");
+        element.classList.add("pause");
     }
     PauseAudio(){
         this.sound.pause();
+        let element = document.getElementById("playpause") as HTMLInputElement;
+        element.classList.remove("pause");
+        element.classList.add("play");
     }
 }

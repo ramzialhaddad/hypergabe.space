@@ -26,42 +26,22 @@ playbutton.onclick = function(){
         case 0:{    //Loading
             radio.SetState(1);
             CurrentSong.PlayAudio();
-            let element = document.getElementById("playpause") as HTMLInputElement;
-            element.classList.remove("play");
-            element.classList.add("pause");
             break;
         }
         case 1:{    //Playing
             radio.SetState(2);
             CurrentSong.PauseAudio();
-            let element = document.getElementById("playpause") as HTMLInputElement;
-            element.classList.remove("pause");
-            element.classList.add("play");
             break;
         }
         case 2:{    //Paused
             radio.SetState(1);
             CurrentSong.PlayAudio();
-            let element = document.getElementById("playpause") as HTMLInputElement;
-            element.classList.remove("play");
-            element.classList.add("pause");
             break;
         }
     }
 }
 
-
-    
-function update(){
-    if(!CurrentSong.GetAudio().ended){
-
-    }else{
-
-    }
-}
-
 let songname = document.getElementById("radio-song-name") as HTMLInputElement;
-
 
 if(month == 4 && day == 20){
     console.log("Happy Birthday!!!")	
@@ -81,7 +61,9 @@ function load(){
         if(!CurrentSong.GetAudio().ended){
             radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
         }else{
+            CurrentSong.PauseAudio();
             radio.SetState(2);
+            console.log("Song has ended");
         }
     })
     songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()

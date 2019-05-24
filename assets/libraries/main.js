@@ -17,35 +17,20 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             case 0: { //Loading
                 radio.SetState(1);
                 CurrentSong.PlayAudio();
-                var element = document.getElementById("playpause");
-                element.classList.remove("play");
-                element.classList.add("pause");
                 break;
             }
             case 1: { //Playing
                 radio.SetState(2);
                 CurrentSong.PauseAudio();
-                var element = document.getElementById("playpause");
-                element.classList.remove("pause");
-                element.classList.add("play");
                 break;
             }
             case 2: { //Paused
                 radio.SetState(1);
                 CurrentSong.PlayAudio();
-                var element = document.getElementById("playpause");
-                element.classList.remove("play");
-                element.classList.add("pause");
                 break;
             }
         }
     };
-    function update() {
-        if (!CurrentSong.GetAudio().ended) {
-        }
-        else {
-        }
-    }
     var songname = document.getElementById("radio-song-name");
     if (month == 4 && day == 20) {
         console.log("Happy Birthday!!!");
@@ -65,7 +50,9 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
                 radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
             }
             else {
+                CurrentSong.PauseAudio();
                 radio.SetState(2);
+                console.log("Song has ended");
             }
         });
         songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
