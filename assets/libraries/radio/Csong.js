@@ -6,6 +6,7 @@ define(["require", "exports"], function (require, exports) {
             this.title = title;
             this.artist = artist;
             this.path = path;
+            this.sound = new Audio(path);
         }
         Song.prototype.GetTitle = function () {
             return this.title;
@@ -15,6 +16,15 @@ define(["require", "exports"], function (require, exports) {
         };
         Song.prototype.GetPath = function () {
             return this.path;
+        };
+        Song.prototype.GetAudio = function () {
+            return this.sound;
+        };
+        Song.prototype.PlayAudio = function () {
+            this.sound.play();
+        };
+        Song.prototype.PauseAudio = function () {
+            this.sound.pause();
         };
         return Song;
     }());

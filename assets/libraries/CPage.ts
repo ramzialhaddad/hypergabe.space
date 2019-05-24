@@ -19,4 +19,5 @@ export class pageEvents {
     GetPlaylist(){
         return this.pageData.playlist;
     }
+
 }

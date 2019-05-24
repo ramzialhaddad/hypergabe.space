@@ -13,22 +13,25 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
     playbutton.onclick = function () {
         var state = radio.GetState();
         switch (state) {
-            case 0: {
+            case 0: { //Loading
                 radio.SetState(1);
+                cursong.PlayAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("play");
                 element.classList.add("pause");
                 break;
             }
-            case 1: {
+            case 1: { //Playing
                 radio.SetState(2);
+                cursong.PauseAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("pause");
                 element.classList.add("play");
                 break;
             }
-            case 2: {
+            case 2: { //Paused
                 radio.SetState(1);
+                cursong.PlayAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("play");
                 element.classList.add("pause");
@@ -36,6 +39,12 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             }
         }
     };
+    //if(month == 4 & day == 20){
+    //    console.log("Happy Birthday!!!")	
+    //}else if (month == 11 & day < 27){
+    //	console.log("Merry Christmas!!!");	
+    //} else {
+    //}
     var songname = document.getElementById("radio-song-name");
     var random = random_1.randomnumber(songlist.length);
     var cursong = songlist[random];
