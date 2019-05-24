@@ -31,7 +31,7 @@
     height: 100%;
     margin: 0 auto;
 }
-.radio-progress{
+#radio-progress{
     display: block;
     width: 100%;
     height: 15px;
@@ -40,7 +40,7 @@
     background-color: rgb(156, 154, 250);
     overflow: hidden;
 }
-.radio-progress-bar{
+#radio-progress-bar{
     display: block;
     width: 0%;
     height: 100%;

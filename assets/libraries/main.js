@@ -5,9 +5,10 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
     var month = d.getMonth();
     var day = d.getDate();
     var radio = new Cradioplayer_1.RadioPlayer();
-    var page = new CPage_1.pageEvents(pageEvents_1.defaultPage);
+    var page;
+    var CurrentSong;
+    var progressbar = radio.GetWidth();
     //Testing data
-    var songlist = page.GetPlaylist();
     //
     var playbutton = document.getElementById("playpause");
     playbutton.onclick = function () {
@@ -15,7 +16,7 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
         switch (state) {
             case 0: { //Loading
                 radio.SetState(1);
-                cursong.PlayAudio();
+                CurrentSong.PlayAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("play");
                 element.classList.add("pause");
@@ -23,7 +24,7 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             }
             case 1: { //Playing
                 radio.SetState(2);
-                cursong.PauseAudio();
+                CurrentSong.PauseAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("pause");
                 element.classList.add("play");
@@ -31,7 +32,7 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             }
             case 2: { //Paused
                 radio.SetState(1);
-                cursong.PlayAudio();
+                CurrentSong.PlayAudio();
                 var element = document.getElementById("playpause");
                 element.classList.remove("play");
                 element.classList.add("pause");
@@ -39,14 +40,34 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             }
         }
     };
-    //if(month == 4 & day == 20){
-    //    console.log("Happy Birthday!!!")	
-    //}else if (month == 11 & day < 27){
-    //	console.log("Merry Christmas!!!");	
-    //} else {
-    //}
+    function update() {
+        if (!CurrentSong.GetAudio().ended) {
+        }
+        else {
+        }
+    }
     var songname = document.getElementById("radio-song-name");
-    var random = random_1.randomnumber(songlist.length);
-    var cursong = songlist[random];
-    songname.innerHTML = cursong.GetTitle() + " - " + cursong.GetArtist();
+    if (month == 4 && day == 20) {
+        console.log("Happy Birthday!!!");
+    }
+    else if (month == 11 && day < 27) {
+        console.log("Merry Christmas!!!");
+    }
+    else {
+        page = new CPage_1.pageEvents(pageEvents_1.defaultPage);
+        load();
+    }
+    function load() {
+        var random = random_1.randomnumber(page.GetPlaylist().length);
+        CurrentSong = page.GetPlaylist()[random];
+        CurrentSong.GetAudio().addEventListener("timeupdate", function () {
+            if (!CurrentSong.GetAudio().ended) {
+                radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
+            }
+            else {
+                radio.SetState(2);
+            }
+        });
+        songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
+    }
 });

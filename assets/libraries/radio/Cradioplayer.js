@@ -1,10 +1,12 @@
-define(["require", "exports", "./Csong"], function (require, exports, Csong_1) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var RadioPlayer = /** @class */ (function () {
         function RadioPlayer() {
             this.state = 0;
-            this.currentsong = new Csong_1.Song("NULL", "NULL", "NULL");
+            var backbar = document.getElementById('radio-progress');
+            this.bar = backbar.clientWidth;
+            this.progress = document.getElementById('radio-progress-bar');
         }
         RadioPlayer.prototype.GetState = function () {
             return this.state;
@@ -12,11 +14,17 @@ define(["require", "exports", "./Csong"], function (require, exports, Csong_1) {
         RadioPlayer.prototype.GetCurSong = function () {
             return this.currentsong;
         };
+        RadioPlayer.prototype.GetWidth = function () {
+            return this.bar;
+        };
         RadioPlayer.prototype.SetState = function (state) {
             this.state = state;
         };
         RadioPlayer.prototype.SetCurSong = function (Song) {
             this.currentsong = Song;
+        };
+        RadioPlayer.prototype.SetProgressBar = function (curtime, maxtime) {
+            this.progress.style.width = (curtime * this.bar / maxtime).toString() + "px";
         };
         return RadioPlayer;
     }());

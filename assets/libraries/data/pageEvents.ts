@@ -44,7 +44,7 @@ let halloweenPage:PageData;     // TO BE ADDED SOON
             new Song("Hit The Spot","Surfing","assets/songs/default/Surfing - Hit The Spot.mp3"),
             new Song("MIDNIGHT","THOUGHTS","assets/songs/default/THOUGHTS - MIDNIGHT.mp3"),
             new Song("V o i d","Zane Alexander","assets/songs/default/Zane Alexander - V o i d.mp3"),
-            new Song("葛城 ミサトYEBISU (YUNG BAE EDIT)","マクロスMACROSS 82-99","assets/songs/default/マクロスMACROSS 82-99 - 葛城 ミサトYEBISU (YUNG BAE EDIT).mp3"),
+            new Song("葛城 ミサトYEBISU (YUNG BAE EDIT)","マクロスMACROSS 82-99","assets/songs/default/マクロスMACROSS 82-99 - 葛城 ミサトYEBISU (YUNG BAE EDIT).mp3")
         ]
     }
     export {defaultPage}
