@@ -53,7 +53,7 @@ if(month == 4 && day == 20){
 }
 
 function load(){
-    
+    //Init RadioPlayer
     let random = randomnumber(page.GetPlaylist().length);
     CurrentSong = page.GetPlaylist()[random];
 
@@ -67,4 +67,6 @@ function load(){
         }
     })
     songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
+    //=================
+    
 }

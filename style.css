@@ -106,5 +106,10 @@ a:hover{
 	50%  { transform: translate(0, 10px); }
 	to   { transform: translate(0, 5px); }    
 }
-  
+
+#imageholder{
+	position: absolute;
+	bottom: 0px;
+}
+
   
