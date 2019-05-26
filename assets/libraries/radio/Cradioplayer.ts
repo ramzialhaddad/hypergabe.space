@@ -24,9 +24,6 @@ export class RadioPlayer{
 
     SetState(state:number){
         this.state = state;
-        if(state == 1){
-            
-        }
     }
 
     SetCurSong(Song:Song){

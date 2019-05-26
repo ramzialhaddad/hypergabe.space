@@ -69,4 +69,6 @@ function load(){
     songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
     //=================
     
+    let image = document.getElementById('gabechan') as HTMLImageElement
+    image.src = page.GetIcon();
 }

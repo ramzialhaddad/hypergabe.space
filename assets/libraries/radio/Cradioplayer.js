@@ -19,8 +19,6 @@ define(["require", "exports"], function (require, exports) {
         };
         RadioPlayer.prototype.SetState = function (state) {
             this.state = state;
-            if (state == 1) {
-            }
         };
         RadioPlayer.prototype.SetCurSong = function (Song) {
             this.currentsong = Song;

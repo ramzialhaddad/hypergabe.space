@@ -43,6 +43,7 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
         load();
     }
     function load() {
+        //Init RadioPlayer
         var random = random_1.randomnumber(page.GetPlaylist().length);
         CurrentSong = page.GetPlaylist()[random];
         CurrentSong.GetAudio().addEventListener("timeupdate", function () {
@@ -56,5 +57,8 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
             }
         });
         songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
+        //=================
+        var image = document.getElementById('gabechan');
+        image.src = page.GetIcon();
     }
 });
