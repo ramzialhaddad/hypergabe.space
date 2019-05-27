@@ -14,7 +14,6 @@ let radio   =   new RadioPlayer();
 let page:pageEvents;
 let CurrentSong:Song;
 
-let progressbar = radio.GetWidth();
 //Testing data
 
 //
@@ -41,6 +40,27 @@ playbutton.onclick = function(){
     }
 }
 
+let previousbutton = document.getElementById("previous") as HTMLInputElement;
+previousbutton.onclick = function(){
+    let curtime = CurrentSong.GetAudio().currentTime;
+    if(curtime > 5){
+        CurrentSong.GetAudio().currentTime = 0;
+    }else{
+        CurrentSong.GetAudio().pause();
+        CurrentSong.GetAudio().currentTime = 0
+        radio.PreviousSong();
+        Update();
+    }
+}
+
+let nextbutton = document.getElementById("next") as HTMLInputElement;
+nextbutton.onclick = function(){
+    CurrentSong.GetAudio().pause();
+    CurrentSong.GetAudio().currentTime = 0
+    radio.NextSong();
+    Update();
+}
+
 let songname = document.getElementById("radio-song-name") as HTMLInputElement;
 
 if(month == 4 && day == 20){
@@ -54,8 +74,10 @@ if(month == 4 && day == 20){
 
 function load(){
     //Init RadioPlayer
-    let random = randomnumber(page.GetPlaylist().length);
-    CurrentSong = page.GetPlaylist()[random];
+    radio.SetPlaylist(page.GetPlaylist());
+    let random = randomnumber(radio.GetPlaylist().length);
+    radio.SetCurSong(random);
+    CurrentSong = radio.GetCurSong();
 
     CurrentSong.GetAudio().addEventListener("timeupdate", function(){
         if(!CurrentSong.GetAudio().ended){
@@ -63,7 +85,6 @@ function load(){
         }else{
             CurrentSong.PauseAudio();
             radio.SetState(2);
-            console.log("Song has ended");
         }
     })
     songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
@@ -76,4 +97,22 @@ function load(){
     random = randomnumber(page.GetMessages().length);
     
     randomText.innerHTML = page.GetMessages()[random];
+}
+
+function Update(){
+    CurrentSong = radio.GetCurSong();
+    songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
+
+    CurrentSong.GetAudio().addEventListener("timeupdate", function(){
+        if(!CurrentSong.GetAudio().ended){
+            radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
+        }else{
+            CurrentSong.PauseAudio();
+            radio.SetState(2);
+        }
+    })
+
+    if(radio.GetState() == 1){
+        CurrentSong.PlayAudio();
+    }
 }
