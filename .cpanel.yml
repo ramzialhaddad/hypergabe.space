@@ -1,4 +1,5 @@
+---
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hypergab/public_html 
-    - /bin cp tsconfig.json $DEPLOYPATH
+    - /bin/cp tsconfig.json $DEPLOYPATH
