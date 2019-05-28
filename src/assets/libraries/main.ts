@@ -83,8 +83,10 @@ function load(){
         if(!CurrentSong.GetAudio().ended){
             radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
         }else{
-            CurrentSong.PauseAudio();
-            radio.SetState(2);
+            CurrentSong.GetAudio().pause();
+            CurrentSong.GetAudio().currentTime = 0
+            radio.NextSong();
+            Update();
         }
     })
     songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
@@ -107,8 +109,10 @@ function Update(){
         if(!CurrentSong.GetAudio().ended){
             radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
         }else{
-            CurrentSong.PauseAudio();
-            radio.SetState(2);
+            CurrentSong.GetAudio().pause();
+            CurrentSong.GetAudio().currentTime = 0
+            radio.NextSong();
+            Update();
         }
     })
 

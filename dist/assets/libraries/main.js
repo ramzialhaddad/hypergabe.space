@@ -72,8 +72,10 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
                 radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
             }
             else {
-                CurrentSong.PauseAudio();
-                radio.SetState(2);
+                CurrentSong.GetAudio().pause();
+                CurrentSong.GetAudio().currentTime = 0;
+                radio.NextSong();
+                Update();
             }
         });
         songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
@@ -92,8 +94,10 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
                 radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
             }
             else {
-                CurrentSong.PauseAudio();
-                radio.SetState(2);
+                CurrentSong.GetAudio().pause();
+                CurrentSong.GetAudio().currentTime = 0;
+                radio.NextSong();
+                Update();
             }
         });
         if (radio.GetState() == 1) {
