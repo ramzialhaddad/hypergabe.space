@@ -11,20 +11,20 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
     //
     var playbutton = document.getElementById("playpause");
     playbutton.onclick = function () {
-        var state = radio.GetState();
+        var state = radio.state;
         switch (state) {
             case 0: { //Loading
-                radio.SetState(1);
+                radio.state = 1;
                 CurrentSong.PlayAudio();
                 break;
             }
             case 1: { //Playing
-                radio.SetState(2);
+                radio.state = 2;
                 CurrentSong.PauseAudio();
                 break;
             }
             case 2: { //Paused
-                radio.SetState(1);
+                radio.state = 1;
                 CurrentSong.PlayAudio();
                 break;
             }
@@ -32,22 +32,22 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
     };
     var previousbutton = document.getElementById("previous");
     previousbutton.onclick = function () {
-        var curtime = CurrentSong.GetAudio().currentTime;
+        var curtime = CurrentSong.audio.currentTime;
         if (curtime > 5) {
-            CurrentSong.GetAudio().currentTime = 0;
+            CurrentSong.audio.currentTime = 0;
         }
         else {
-            CurrentSong.GetAudio().pause();
-            CurrentSong.GetAudio().currentTime = 0;
-            radio.PreviousSong();
+            CurrentSong.audio.pause();
+            CurrentSong.audio.currentTime = 0;
+            radio.previousSong();
             Update();
         }
     };
     var nextbutton = document.getElementById("next");
     nextbutton.onclick = function () {
-        CurrentSong.GetAudio().pause();
-        CurrentSong.GetAudio().currentTime = 0;
-        radio.NextSong();
+        CurrentSong.audio.pause();
+        CurrentSong.audio.currentTime = 0;
+        radio.nextSong();
         Update();
     };
     var songname = document.getElementById("radio-song-name");
@@ -63,44 +63,32 @@ define(["require", "exports", "./random", "./radio/Cradioplayer", "./CPage", "./
     }
     function load() {
         //Init RadioPlayer
-        radio.SetPlaylist(page.GetPlaylist());
-        var random = random_1.randomnumber(radio.GetPlaylist().length);
-        radio.SetCurSong(random);
-        CurrentSong = radio.GetCurSong();
-        CurrentSong.GetAudio().addEventListener("timeupdate", function () {
-            if (!CurrentSong.GetAudio().ended) {
-                radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
-            }
-            else {
-                CurrentSong.GetAudio().pause();
-                CurrentSong.GetAudio().currentTime = 0;
-                radio.NextSong();
-                Update();
-            }
-        });
-        songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
+        radio.playlist = page.playlist;
+        var random = random_1.randomnumber(radio.playlist.length);
+        radio.currentIndex = random;
+        Update();
         //=================
         var image = document.getElementById('gabechan');
-        image.src = page.GetIcon();
+        image.src = page.icon;
         var randomText = document.getElementById('randomtext');
-        random = random_1.randomnumber(page.GetMessages().length);
-        randomText.innerHTML = page.GetMessages()[random];
+        random = random_1.randomnumber(page.messages.length);
+        randomText.innerHTML = page.messages[random];
     }
     function Update() {
-        CurrentSong = radio.GetCurSong();
-        songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist();
-        CurrentSong.GetAudio().addEventListener("timeupdate", function () {
-            if (!CurrentSong.GetAudio().ended) {
-                radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration);
+        CurrentSong = radio.currentSong;
+        songname.innerHTML = CurrentSong.title + " - " + CurrentSong.artist;
+        CurrentSong.audio.addEventListener("timeupdate", function () {
+            if (!CurrentSong.audio.ended) {
+                radio.updateProgressBar(CurrentSong.audio.currentTime, CurrentSong.audio.duration);
             }
             else {
-                CurrentSong.GetAudio().pause();
-                CurrentSong.GetAudio().currentTime = 0;
-                radio.NextSong();
+                CurrentSong.audio.pause();
+                CurrentSong.audio.currentTime = 0;
+                radio.nextSong();
                 Update();
             }
         });
-        if (radio.GetState() == 1) {
+        if (radio.state == 1) {
             CurrentSong.PlayAudio();
         }
     }

@@ -3,52 +3,72 @@ define(["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var RadioPlayer = /** @class */ (function () {
         function RadioPlayer() {
-            this.state = 0;
-            this.index = 0;
+            this._state = 0;
+            this._index = 0;
             var backbar = document.getElementById('radio-progress');
-            this.bar = backbar.clientWidth;
-            this.progress = document.getElementById('radio-progress-bar');
+            this._bar = backbar.clientWidth;
+            this._progress = document.getElementById('radio-progress-bar');
         }
-        RadioPlayer.prototype.GetState = function () {
-            return this.state;
+        Object.defineProperty(RadioPlayer.prototype, "state", {
+            get: function () {
+                return this._state;
+            },
+            set: function (state) {
+                this._state = state;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RadioPlayer.prototype, "currentSong", {
+            get: function () {
+                return this._playlist[this._index];
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RadioPlayer.prototype, "width", {
+            get: function () {
+                return this._bar;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RadioPlayer.prototype, "playlist", {
+            get: function () {
+                return this._playlist;
+            },
+            set: function (songs) {
+                this._playlist = songs;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(RadioPlayer.prototype, "currentIndex", {
+            set: function (index) {
+                this._index = index;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        RadioPlayer.prototype.updateProgressBar = function (curtime, maxtime) {
+            this._progress.style.width = (curtime * this._bar / maxtime).toString() + "px";
         };
-        RadioPlayer.prototype.GetCurSong = function () {
-            return this.playlist[this.index];
-        };
-        RadioPlayer.prototype.GetWidth = function () {
-            return this.bar;
-        };
-        RadioPlayer.prototype.GetPlaylist = function () {
-            return this.playlist;
-        };
-        RadioPlayer.prototype.SetState = function (state) {
-            this.state = state;
-        };
-        RadioPlayer.prototype.SetCurSong = function (index) {
-            this.index = index;
-        };
-        RadioPlayer.prototype.SetProgressBar = function (curtime, maxtime) {
-            this.progress.style.width = (curtime * this.bar / maxtime).toString() + "px";
-        };
-        RadioPlayer.prototype.SetPlaylist = function (songs) {
-            this.playlist = songs;
-        };
-        RadioPlayer.prototype.PreviousSong = function () {
-            var lenght = this.playlist.length;
-            if (this.index == 0) {
-                this.index = lenght - 1;
+        RadioPlayer.prototype.previousSong = function () {
+            var lenght = this._playlist.length;
+            if (this._index == 0) {
+                this._index = lenght - 1;
             }
             else {
-                this.index = this.index - 1;
+                this._index = this._index - 1;
             }
         };
-        RadioPlayer.prototype.NextSong = function () {
-            var lenght = this.playlist.length;
-            if (this.index == lenght - 1) {
-                this.index = 0;
+        RadioPlayer.prototype.nextSong = function () {
+            var lenght = this._playlist.length;
+            if (this._index == lenght - 1) {
+                this._index = 0;
             }
             else {
-                this.index = this.index + 1;
+                this._index = this._index + 1;
             }
         };
         return RadioPlayer;
