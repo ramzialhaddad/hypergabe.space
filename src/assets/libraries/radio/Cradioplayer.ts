@@ -1,61 +1,62 @@
 import {Song} from "./Csong"
 export class RadioPlayer{
-    private state!:number; // 0 = Ready     1 = Playing     2 = Paused 
-    //private currentsong!:Song;
-    private playlist!:Song[];
-    private index!:number;
-    private bar!:number;
-    private progress!:HTMLSpanElement;
+    private _state!:number;                 // State of the radio player [0 = Ready     1 = Playing     2 = Paused]
+    private _playlist!:Song[];              // Array of the song class
+    private _index!:number;                 // Current location of array, current song
+    private _bar!:number;                   // The progress bar value
+    private _progress!:HTMLSpanElement;     // The progress bar element
 
     constructor(){
-        this.state = 0;
-        this.index = 0;
+        this._state = 0;
+        this._index = 0;
+
         let backbar = document.getElementById('radio-progress') as HTMLSpanElement
-        this.bar = backbar.clientWidth;
-        this.progress = document.getElementById('radio-progress-bar') as HTMLSpanElement
+        this._bar = backbar.clientWidth;
+
+        this._progress = document.getElementById('radio-progress-bar') as HTMLSpanElement
     }
 
-    GetState(){
-        return this.state;
+    get state(): number{
+        return this._state;
     }   
-    GetCurSong(){
-        return this.playlist[this.index];
+    get currentSong(): Song{
+        return this._playlist[this._index];
     }
-    GetWidth(){
-        return this.bar;
+    get width(): number{
+        return this._bar;
     }
-    GetPlaylist(){
-        return this.playlist;
-    }
-
-    SetState(state:number){
-        this.state = state;
-    }
-    SetCurSong(index:number){
-        this.index = index;
-    }
-    SetProgressBar(curtime:number, maxtime:number){
-        this.progress.style.width = (curtime*this.bar/maxtime).toString() + "px";
-    }
-    SetPlaylist(songs:Song[]){
-        this.playlist = songs;
+    get playlist(): Song[]{
+        return this._playlist;
     }
 
-    PreviousSong(){
-        let lenght = this.playlist.length
-        if(this.index == 0){
-            this.index = lenght - 1
+    set state(state:number){
+        this._state = state;
+    }
+    set currentIndex(index:number){
+        this._index = index;
+    }
+    set playlist(songs:Song[]){
+        this._playlist = songs;
+    }
+
+    public updateProgressBar(curtime:number, maxtime:number): void{
+        this._progress.style.width = (curtime*this._bar/maxtime).toString() + "px";
+    }
+    public previousSong(): void{
+        let lenght = this._playlist.length
+        if(this._index == 0){
+            this._index = lenght - 1
         }else{
-            this.index = this.index - 1
+            this._index = this._index - 1
         }
         
     }
-    NextSong(){
-        let lenght = this.playlist.length
-        if(this.index == lenght - 1){
-            this.index = 0
+    public nextSong(): void{
+        let lenght = this._playlist.length
+        if(this._index == lenght - 1){
+            this._index = 0
         }else{
-            this.index = this.index + 1
+            this._index = this._index + 1
         }
     }
 
