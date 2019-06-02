@@ -2,22 +2,20 @@ import {Song} from "./radio/Csong"
 import {PageData} from './data/pageEvents'
 export class pageEvents {
 
-    private pageData!:PageData;
+    private _pageData!:PageData;
 
     constructor(pageData:PageData){
-        this.pageData = pageData;
+        this._pageData = pageData;
     }
 
-    GetIcon(){
-        return this.pageData.icon;
+    get icon(){
+        return this._pageData.icon;
     }
-
-    GetMessages(){
-        return this.pageData.messages;
+    get messages(){
+        return this._pageData.messages;
     }
-
-    GetPlaylist(){
-        return this.pageData.playlist;
+    get playlist(){
+        return this._pageData.playlist;
     }
 
 }
