@@ -20,20 +20,20 @@ let CurrentSong:Song;
 
 let playbutton = document.getElementById("playpause") as HTMLInputElement;
 playbutton.onclick = function(){
-    let state = radio.GetState();
+    let state = radio.state;
     switch(state){
         case 0:{    //Loading
-            radio.SetState(1);
+            radio.state = 1;
             CurrentSong.PlayAudio();
             break;
         }
         case 1:{    //Playing
-            radio.SetState(2);
+            radio.state = 2;
             CurrentSong.PauseAudio();
             break;
         }
         case 2:{    //Paused
-            radio.SetState(1);
+            radio.state = 1;
             CurrentSong.PlayAudio();
             break;
         }
@@ -42,22 +42,22 @@ playbutton.onclick = function(){
 
 let previousbutton = document.getElementById("previous") as HTMLInputElement;
 previousbutton.onclick = function(){
-    let curtime = CurrentSong.GetAudio().currentTime;
+    let curtime = CurrentSong.audio.currentTime;
     if(curtime > 5){
-        CurrentSong.GetAudio().currentTime = 0;
+        CurrentSong.audio.currentTime = 0;
     }else{
-        CurrentSong.GetAudio().pause();
-        CurrentSong.GetAudio().currentTime = 0
-        radio.PreviousSong();
+        CurrentSong.audio.pause();
+        CurrentSong.audio.currentTime = 0
+        radio.previousSong();
         Update();
     }
 }
 
 let nextbutton = document.getElementById("next") as HTMLInputElement;
 nextbutton.onclick = function(){
-    CurrentSong.GetAudio().pause();
-    CurrentSong.GetAudio().currentTime = 0
-    radio.NextSong();
+    CurrentSong.audio.pause();
+    CurrentSong.audio.currentTime = 0
+    radio.nextSong();
     Update();
 }
 
@@ -74,49 +74,39 @@ if(month == 4 && day == 20){
 
 function load(){
     //Init RadioPlayer
-    radio.SetPlaylist(page.GetPlaylist());
-    let random = randomnumber(radio.GetPlaylist().length);
-    radio.SetCurSong(random);
-    CurrentSong = radio.GetCurSong();
+    radio.playlist = page.playlist;
 
-    CurrentSong.GetAudio().addEventListener("timeupdate", function(){
-        if(!CurrentSong.GetAudio().ended){
-            radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
-        }else{
-            CurrentSong.GetAudio().pause();
-            CurrentSong.GetAudio().currentTime = 0
-            radio.NextSong();
-            Update();
-        }
-    })
-    songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
+    let random = randomnumber(radio.playlist.length);
+    radio.currentIndex = random;
+    
+    Update();
     //=================
     
     let image = document.getElementById('gabechan') as HTMLImageElement
-    image.src = page.GetIcon();
+    image.src = page.icon;
 
     let randomText = document.getElementById('randomtext') as HTMLDivElement;
-    random = randomnumber(page.GetMessages().length);
+    random = randomnumber(page.messages.length);
     
-    randomText.innerHTML = page.GetMessages()[random];
+    randomText.innerHTML = page.messages[random];
 }
 
 function Update(){
-    CurrentSong = radio.GetCurSong();
-    songname.innerHTML = CurrentSong.GetTitle() + " - " + CurrentSong.GetArtist()
+    CurrentSong = radio.currentSong;
+    songname.innerHTML = CurrentSong.title + " - " + CurrentSong.artist
 
-    CurrentSong.GetAudio().addEventListener("timeupdate", function(){
-        if(!CurrentSong.GetAudio().ended){
-            radio.SetProgressBar(CurrentSong.GetAudio().currentTime, CurrentSong.GetAudio().duration)
+    CurrentSong.audio.addEventListener("timeupdate", function(){
+        if(!CurrentSong.audio.ended){
+            radio.updateProgressBar(CurrentSong.audio.currentTime, CurrentSong.audio.duration)
         }else{
-            CurrentSong.GetAudio().pause();
-            CurrentSong.GetAudio().currentTime = 0
-            radio.NextSong();
+            CurrentSong.audio.pause();
+            CurrentSong.audio.currentTime = 0
+            radio.nextSong();
             Update();
         }
     })
 
-    if(radio.GetState() == 1){
+    if(radio.state == 1){
         CurrentSong.PlayAudio();
     }
 }
